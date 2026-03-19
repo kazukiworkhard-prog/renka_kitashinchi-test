@@ -128,10 +128,21 @@ nav.sc{background:rgba(248,244,238,.97);border-color:var(--bd)}
   opacity: 1;
 }
 
+@media (max-width: 768px) {
+  nav {
+    height: 56px;        /* 高さを縮小 */
+    padding: 0 20px;     /* 左右の余白も縮小 */
+  }
+
+  .nlogo-t {
+    font-size: 22px;     /* ロゴ文字を小さく */
+  }
+}
 /* スマホ対応（必要に応じて） */
 @media (max-width: 768px) {
   .nav-links { display: none; }
 }
+
 
 
 /* ✕ アイコンに変化 */

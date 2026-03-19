@@ -138,12 +138,36 @@ nav.sc{background:rgba(248,244,238,.97);border-color:var(--bd)}
     font-size: 22px;     /* ロゴ文字を小さく */
   }
 }
-/* スマホ対応（必要に応じて） */
-@media (max-width: 768px) {
-  .nav-links { display: none; }
+
+/* タブレット（iPad） */
+@media (max-width: 1024px) {
+  nav {
+    padding: 0 30px;
+  }
+
+  .nav-links {
+    gap: 28px;
+  }
+
+  .nav-link {
+    font-size: 12px;
+  }
 }
 
+/* タブレット縦向き以下はハンバーガーに切り替え */
+@media (max-width: 768px) {
+  nav {
+    height: 56px;
+    padding: 0 20px;
+  }
 
+  :root { --nav-h: 56px; }
+
+  .nlogo-t { font-size: 22px; }
+  .nav-icon { display: none !important; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; margin-left: auto; }
+}
 
 /* ✕ アイコンに変化 */
 .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }

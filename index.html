@@ -70,16 +70,6 @@
 <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
 <div id="cd"><div id="cdi"></div></div>
 <div id="cr"><div id="cri"></div></div>
-<input type="file" id="fi-logo"  class="hidden-input" accept="image/*">
-<input type="file" id="fi-hero"  class="hidden-input" accept="image/*">
-<input type="file" id="fi-gal0" class="hidden-input" accept="image/*">
-<input type="file" id="fi-gal1" class="hidden-input" accept="image/*">
-<input type="file" id="fi-gal2" class="hidden-input" accept="image/*">
-<input type="file" id="fi-gal3" class="hidden-input" accept="image/*">
-<input type="file" id="fi-gal4" class="hidden-input" accept="image/*">
-<input type="file" id="fi-room0" class="hidden-input" accept="image/*">
-<input type="file" id="fi-room1" class="hidden-input" accept="image/*">
-
 <!-- LOADER -->
 <div id="loader">
   <div id="loader-lotus">
@@ -132,7 +122,6 @@
   <button class="nlogo" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="background:none;border:none;cursor:pointer;padding:0">
     <div style="position:relative">
       <span class="nlogo-t" id="nav-logo-text">蓮花</span>
-      <button class="logo-edit-btn" onclick="document.getElementById('fi-logo').click()">変更</button>
     </div>
   </button>
   
@@ -556,7 +545,7 @@
   <p class="past-menu-lead rv">これまでにご好評いただいた旬の一品をご紹介します。<br>素材・季節・産地にこだわった蓮花ならではの創作料理。</p>
   <div class="past-menu-grid">
     <div class="pm-card rv d1">
-      <div class="pm-img-wrap">
+      <div class="pm-img-wrap" id="pm-img-0">
         <div class="pm-img-placeholder">
           <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
             <rect width="120" height="80" fill="#f0e8dc"/>
@@ -571,7 +560,7 @@
       </div>
     </div>
     <div class="pm-card rv d2">
-      <div class="pm-img-wrap">
+      <div class="pm-img-wrap" id="pm-img-1">
         <div class="pm-img-placeholder">
           <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
             <rect width="120" height="80" fill="#f0e8dc"/>
@@ -586,7 +575,7 @@
       </div>
     </div>
     <div class="pm-card rv d3">
-      <div class="pm-img-wrap">
+      <div class="pm-img-wrap" id="pm-img-2">
         <div class="pm-img-placeholder">
           <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
             <rect width="120" height="80" fill="#f0e8dc"/>
@@ -601,7 +590,7 @@
       </div>
     </div>
     <div class="pm-card rv d4">
-      <div class="pm-img-wrap">
+      <div class="pm-img-wrap" id="pm-img-3">
         <div class="pm-img-placeholder">
           <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
             <rect width="120" height="80" fill="#f0e8dc"/>
@@ -644,8 +633,20 @@
   <div class="slbl rv">News</div>
   <h2 class="sjp rv d1">お知らせ</h2>
   <p class="sen rv d2">Latest Updates</p>
-  <div class="news-grid rv d2" id="news-list"></div>
-  <button class="news-add" onclick="openAddNews()">＋ お知らせを追加</button>
+  <div class="news-grid rv d2" id="news-list">
+    <div class="ni-row">
+      <span class="ni-row-date">2026.03.01</span>
+      <div><span class="ni-row-cat">Holiday</span><p class="ni-row-title">3月20日（木・祝）は定休日となります。</p></div>
+    </div>
+    <div class="ni-row">
+      <span class="ni-row-date">2026.02.01</span>
+      <div><span class="ni-row-cat">Menu</span><p class="ni-row-title">春の旬食材を使用した新コースをご用意しました。</p></div>
+    </div>
+    <div class="ni-row">
+      <span class="ni-row-date">2026.01.15</span>
+      <div><span class="ni-row-cat">News</span><p class="ni-row-title">北新地にてリニューアルオープンいたしました。</p></div>
+    </div>
+  </div>
 </section>
 
 <!-- CTA BAND -->
@@ -814,366 +815,32 @@
   <a href="https://tabelog.com/osaka/A2701/A270101/27146515/" target="_blank" rel="noopener" class="mcta-rsv">ご予約はこちら</a>
 </div>
 
-<!-- EDIT -->
-<div id="edit-lock-hint">もう一度入力でロック</div>
-<button id="edit-toggle" onclick="toggleEdit()">編集モード</button>
-<div id="edit-panel">
-  <p class="ep-title">Edit</p>
-  <p class="ep-sub">蓮花 · Content Manager</p>
-  <div class="ep-section">
-    <p class="ep-sec-title">ヒーロー写真</p>
-    <div class="ep-img-preview" id="prev-hero"></div>
-    <button class="ep-file-btn" onclick="document.getElementById('fi-hero').click()">📎 写真をアップロード</button>
-  </div>
-  <div class="ep-section">
-    <p class="ep-sec-title">ギャラリー写真</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-      <div><div class="ep-img-preview" id="prev-gal0" style="aspect-ratio:1"></div><button class="ep-file-btn" style="margin-top:4px" onclick="document.getElementById('fi-gal0').click()">1</button></div>
-      <div><div class="ep-img-preview" id="prev-gal1" style="aspect-ratio:1"></div><button class="ep-file-btn" style="margin-top:4px" onclick="document.getElementById('fi-gal1').click()">2</button></div>
-      <div><div class="ep-img-preview" id="prev-gal2" style="aspect-ratio:1"></div><button class="ep-file-btn" style="margin-top:4px" onclick="document.getElementById('fi-gal2').click()">3</button></div>
-      <div><div class="ep-img-preview" id="prev-gal3" style="aspect-ratio:1"></div><button class="ep-file-btn" style="margin-top:4px" onclick="document.getElementById('fi-gal3').click()">4</button></div>
-      <div><div class="ep-img-preview" id="prev-gal4" style="aspect-ratio:1"></div><button class="ep-file-btn" style="margin-top:4px" onclick="document.getElementById('fi-gal4').click()">5</button></div>
-    </div>
-  </div>
-  <div class="ep-section">
-    <p class="ep-sec-title">客席写真</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-      <div><div class="ep-img-preview" id="prev-room0" style="aspect-ratio:3/4"></div><button class="ep-file-btn" style="margin-top:4px" onclick="document.getElementById('fi-room0').click()">個室</button></div>
-      <div><div class="ep-img-preview" id="prev-room1" style="aspect-ratio:3/4"></div><button class="ep-file-btn" style="margin-top:4px" onclick="document.getElementById('fi-room1').click()">カウンター</button></div>
-    </div>
-  </div>
-  <div class="ep-section">
-    <p class="ep-sec-title">お知らせを追加</p>
-    <div class="ep-field"><label>日付</label><input type="date" id="ep-news-date"></div>
-    <div class="ep-field"><label>カテゴリ</label><select id="ep-news-cat"><option>News</option><option>Menu</option><option>Event</option><option>Holiday</option><option>Info</option></select></div>
-    <div class="ep-field"><label>内容</label><textarea id="ep-news-text" placeholder="お知らせの内容..."></textarea></div>
-    <button class="ep-btn ep-btn-add" onclick="addNews()">＋ 追加する</button>
-  </div>
-  <div class="ep-section">
-    <p class="ep-sec-title">コースメニュー</p>
-    <div class="ep-field">
-      <label>期間タイトル（例：2026年3月〜）</label>
-      <input type="text" id="ep-course-period" placeholder="2026年3月〜">
-    </div>
-    <div id="ep-course-list" style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px"></div>
-    <button class="ep-btn ep-btn-add" onclick="addCourseItem()" style="margin-top:4px">＋ 品目を追加</button>
-  </div>
-  <div class="ep-section">
-    <p class="ep-sec-title">データ管理</p>
-    <button class="ep-btn" onclick="saveData()">💾 変更を保存</button>
-    <button class="ep-btn" onclick="exportData()" style="margin-top:8px;opacity:.7">📤 エクスポート</button>
-  </div>
-</div>
-<div class="ep-save-notice" id="save-notice">保存しました ✓</div>
+<script>
+/* === RENKA · WordPress-ready static site === */
 
-<script >
-  /* STATE */
-let state = {
-  images: {},
-  coursePeriod: '2026年3月〜',
-  courseItems: [
-    {name:'神戸牛三角バラと洋梨のミルフィーユ', detail:'昆布墨塩　黒胡椒　／　無農薬野菜サラダ　梅ドレッシング'},
-    {name:'マンガリッツァ豚のポトフ　オレンジゼスト', detail:'アイコ　人参'},
-    {name:'マゾイのカルパッチョ', detail:'紫キャベツ　せとか　フルール・ド・セル'},
-    {name:'うすなが牛のハンバーグ　ブリオッシュサンド', detail:'アプリコット　アーモンド'},
-    {name:'牛テールのトマト煮込み', detail:'さつまいも　蕾菜'},
-    {name:'グラニテ', detail:'晩白柚　グレープフルーツ'},
-    {name:'マンガリッツァ豚肩ロースのグリル', detail:'3種類のリンゴのコンディメント'},
-    {name:'うすなが牛すじカレー', detail:'マンゴー　醤油粕'},
-    {name:'本日のデザート', detail:'季節のフルーツを使用したシェフ特製デザート'},
-  ],
-  news: [
-    {date:'2026-01-15',cat:'News',text:'北新地にてリニューアルオープンいたしました。'},
-    {date:'2026-02-01',cat:'Menu',text:'春の旬食材を使用した新コースをご用意しました。'},
-    {date:'2026-03-01',cat:'Holiday',text:'3月20日（木・祝）は定休日となります。'},
-  ]
-};
-try{ const s=localStorage.getItem('renka-state'); if(s) state=JSON.parse(s); }catch(e){}
-
-document.addEventListener('DOMContentLoaded',()=>{ renderNews(); restoreImages(); initFileInputs(); initDragDrop(); initSlideshow(); });
-window.addEventListener('load',()=>setTimeout(()=>{
+document.addEventListener('DOMContentLoaded', () => { initSlideshow(); });
+window.addEventListener('load', () => setTimeout(() => {
   document.getElementById('loader').classList.add('out');
   document.body.classList.add('loaded');
-},2500));
+}, 2500));
 
 /* CURSOR */
-const cd=document.getElementById('cd'),cr=document.getElementById('cr'),cri=document.getElementById('cri');
-document.addEventListener('mousemove',e=>{
-  cd.style.left=e.clientX+'px';cd.style.top=e.clientY+'px';
-  setTimeout(()=>{cr.style.left=e.clientX+'px';cr.style.top=e.clientY+'px';},65);
+const cd = document.getElementById('cd'), cr = document.getElementById('cr');
+document.addEventListener('mousemove', e => {
+  cd.style.left = e.clientX + 'px'; cd.style.top = e.clientY + 'px';
+  setTimeout(() => { cr.style.left = e.clientX + 'px'; cr.style.top = e.clientY + 'px'; }, 65);
 });
 
 /* NAV */
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>60));
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 60));
 
 /* REVEAL */
-const obs=new IntersectionObserver(es=>{
-  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});
-},{threshold:.08,rootMargin:'0px 0px -36px 0px'});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-
-/* EDIT UNLOCK */
-const PASS='renka2026';
-let buf='',tim=null;
-function unlockEdit(){
-  document.getElementById('edit-toggle').style.display='flex';
-  document.body.classList.add('edit-unlocked');
-  toggleEdit();
-}
-function lockEdit(){
-  document.body.classList.remove('edit-mode','edit-unlocked');
-  document.getElementById('edit-toggle').style.display='none';
-  buf='';
-}
-function toggleEdit(){
-  document.body.classList.toggle('edit-mode');
-  document.querySelectorAll('.hero-r .gp-edit').forEach(b=>{
-    b.style.display=document.body.classList.contains('edit-mode')?'block':'none';
-  });
-}
-document.addEventListener('keydown',e=>{
-  const t=document.activeElement.tagName;
-  if(t==='INPUT'||t==='TEXTAREA'||t==='SELECT') return;
-  buf+=e.key.toLowerCase();
-  if(buf.length>PASS.length+2) buf=buf.slice(-PASS.length);
-  clearTimeout(tim); tim=setTimeout(()=>{buf='';},3000);
-  if(buf.includes(PASS)){
-    buf='';
-    if(document.body.classList.contains('edit-unlocked')){lockEdit();showSaveNotice('編集モードを終了しました');}
-    else{unlockEdit();showSaveNotice('編集モードを開始しました ✎');}
-  }
-  if(e.shiftKey&&e.altKey&&e.key==='E'){
-    e.preventDefault();
-    if(document.body.classList.contains('edit-unlocked')){lockEdit();}else{unlockEdit();}
-  }
-});
-(()=>{if(new URLSearchParams(location.search).get('edit')==='true') unlockEdit();})();
-
-/* FILE INPUTS */
-function initFileInputs(){
-  const map={
-    'fi-hero': {key:'hero',preview:'prev-hero',target:'hero-photo'},
-    'fi-gal0': {key:'gal0',preview:'prev-gal0',target:'gal-0'},
-    'fi-gal1': {key:'gal1',preview:'prev-gal1',target:'gal-1'},
-    'fi-gal2': {key:'gal2',preview:'prev-gal2',target:'gal-2'},
-    'fi-gal3': {key:'gal3',preview:'prev-gal3',target:'gal-3'},
-    'fi-gal4': {key:'gal4',preview:'prev-gal4',target:'gal-4'},
-    'fi-room0':{key:'room0',preview:'prev-room0',target:'room-0'},
-    'fi-room1':{key:'room1',preview:'prev-room1',target:'room-1'},
-  };
-  Object.entries(map).forEach(([id,cfg])=>{
-    document.getElementById(id).addEventListener('change',function(){
-      if(!this.files[0]) return;
-      const r=new FileReader();
-      r.onload=e=>applyImage(e.target.result,cfg);
-      r.readAsDataURL(this.files[0]);
-    });
-  });
-}
-function applyImage(url,cfg){
-  state.images[cfg.key]=url;
-  const prev=document.getElementById(cfg.preview);
-  if(prev){prev.style.backgroundImage=`url(${url})`;prev.classList.add('has-img');}
-  if(cfg.isLogo){applyLogo(url);}
-  else if(cfg.target){
-    const el=document.getElementById(cfg.target);
-    if(el){el.style.backgroundImage=`url(${url})`;el.className=el.className.replace(/no-img[\w-]*/g,'').trim();}
-  }
-  syncSlidesToGallery(); startSlideshow();
-  showSaveNotice();
-}
-function applyLogo(url){ /* logo always shown as text */ }
-function restoreImages(){
-  const map={
-    logo: {preview:'prev-logo',isLogo:true},
-    hero: {preview:'prev-hero',target:'hero-photo'},
-    gal0: {preview:'prev-gal0',target:'gal-0'},
-    gal1: {preview:'prev-gal1',target:'gal-1'},
-    gal2: {preview:'prev-gal2',target:'gal-2'},
-    gal3: {preview:'prev-gal3',target:'gal-3'},
-    gal4: {preview:'prev-gal4',target:'gal-4'},
-    room0:{preview:'prev-room0',target:'room-0'},
-    room1:{preview:'prev-room1',target:'room-1'},
-  };
-  Object.entries(map).forEach(([key,cfg])=>{
-    const url=state.images[key]; if(!url) return;
-    const prev=document.getElementById(cfg.preview);
-    if(prev){prev.style.backgroundImage=`url(${url})`;prev.classList.add('has-img');}
-    if(cfg.isLogo){applyLogo(url);}
-    else if(cfg.target){
-      const el=document.getElementById(cfg.target);
-      if(el){el.style.backgroundImage=`url(${url})`;el.className=el.className.replace(/no-img[\w-]*/g,'').trim();}
-    }
-  });
-}
-function initDragDrop(){
-  document.querySelectorAll('.gp').forEach(gp=>{
-    const idx=gp.dataset.idx, drop=document.getElementById(`drop-${idx}`);
-    gp.addEventListener('dragover',e=>{e.preventDefault();if(drop) drop.classList.add('active');});
-    gp.addEventListener('dragleave',()=>{if(drop) drop.classList.remove('active');});
-    gp.addEventListener('drop',e=>{
-      e.preventDefault(); if(drop) drop.classList.remove('active');
-      const file=e.dataTransfer.files[0];
-      if(!file||!file.type.startsWith('image/')) return;
-      const r=new FileReader();
-      r.onload=ev=>applyImage(ev.target.result,{key:`gal${idx}`,preview:`prev-gal${idx}`,target:`gal-${idx}`});
-      r.readAsDataURL(file);
-    });
-  });
-}
-
-/* NEWS */
-function renderNews(){
-  const list=document.getElementById('news-list');
-  if(!list) return;
-  if(!state.news.length){
-    list.innerHTML='<div style="padding:28px 32px;font-family:Cormorant Garamond,serif;font-size:12px;letter-spacing:.3em;color:rgba(42,33,24,.3)">お知らせはありません</div>';
-    return;
-  }
-  list.innerHTML=[...state.news].reverse().map((n,i)=>`
-    <div class="ni-row">
-      <span class="ni-row-date">${fmtDate(n.date)}</span>
-      <div><span class="ni-row-cat">${n.cat}</span><p class="ni-row-title">${n.text}</p></div>
-      <button class="ni-row-del" onclick="deleteNews(${state.news.length-1-i})">削除</button>
-    </div>`).join('');
-}
-function fmtDate(d){
-  if(!d) return '';
-  const dt=new Date(d);
-  return `${dt.getFullYear()}.${String(dt.getMonth()+1).padStart(2,'0')}.${String(dt.getDate()).padStart(2,'0')}`;
-}
-function addNews(){
-  const date=document.getElementById('ep-news-date').value;
-  const cat=document.getElementById('ep-news-cat').value;
-  const text=document.getElementById('ep-news-text').value.trim();
-  if(!date||!text){alert('日付と内容を入力してください');return;}
-  state.news.push({date,cat,text});
-  document.getElementById('ep-news-date').value='';
-  document.getElementById('ep-news-text').value='';
-  renderNews(); saveData(); showSaveNotice();
-}
-function openAddNews(){
-  document.body.classList.add('edit-mode');
-  document.getElementById('edit-toggle').style.display='flex';
-  document.body.classList.add('edit-unlocked');
-  setTimeout(()=>document.getElementById('ep-news-date').focus(),500);
-}
-function deleteNews(i){
-  if(!confirm('削除しますか？')) return;
-  state.news.splice(i,1); renderNews(); saveData(); showSaveNotice();
-}
-
-/* COURSE */
-function renderCourse() {
-  // Update period title
-  const period = state.coursePeriod || '';
-  const periodEl = document.querySelector('#menu h3.sjp + p.sen');
-  if(periodEl) {
-    const h3 = document.querySelector('#menu h3.sjp');
-    if(h3) h3.previousElementSibling && (h3.previousElementSibling.textContent = period);
-    // Update the h3 itself
-    const titleEl = document.querySelector('#menu .rv.d2 h3');
-    if(titleEl) titleEl.textContent = period + ' コースメニュー';
-  }
-
-  // Update course items in main page
-  const list = document.querySelector('.course-list');
-  if(list && state.courseItems) {
-    list.innerHTML = state.courseItems.map((item, i) => `
-      <div class="course-item">
-        <span class="course-num">${String(i+1).padStart(2,'0')}</span>
-        <div class="course-body">
-          <p class="course-name">${item.name}</p>
-          ${item.detail ? `<p class="course-detail">${item.detail}</p>` : ''}
-        </div>
-      </div>`).join('');
-  }
-
-  // Update edit panel list
-  const epList = document.getElementById('ep-course-list');
-  if(!epList) return;
-  epList.innerHTML = (state.courseItems||[]).map((item, i) => `
-    <div style="background:rgba(248,244,238,.04);border:1px solid rgba(154,120,40,.1);padding:10px 12px;display:flex;flex-direction:column;gap:6px">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
-        <span style="font-family:'Cormorant Garamond',serif;font-size:9px;letter-spacing:.4em;color:var(--gold)">${String(i+1).padStart(2,'0')}</span>
-        <div style="display:flex;gap:4px">
-          ${i > 0 ? `<button onclick="moveCourse(${i},-1)" style="background:none;border:1px solid rgba(154,120,40,.2);color:rgba(248,244,238,.4);padding:2px 7px;cursor:pointer;font-size:10px">↑</button>` : ''}
-          ${i < state.courseItems.length-1 ? `<button onclick="moveCourse(${i},1)" style="background:none;border:1px solid rgba(154,120,40,.2);color:rgba(248,244,238,.4);padding:2px 7px;cursor:pointer;font-size:10px">↓</button>` : ''}
-          <button onclick="deleteCourse(${i})" style="background:none;border:1px solid rgba(140,43,24,.3);color:rgba(140,43,24,.5);padding:2px 8px;cursor:pointer;font-size:10px">×</button>
-        </div>
-      </div>
-      <input type="text" value="${item.name}" oninput="updateCourse(${i},'name',this.value)"
-        style="width:100%;background:rgba(248,244,238,.06);border:1px solid rgba(154,120,40,.12);color:rgba(248,244,238,.8);font-family:'Shippori Mincho',serif;font-size:11px;padding:6px 10px;outline:none"
-        placeholder="料理名">
-      <input type="text" value="${item.detail||''}" oninput="updateCourse(${i},'detail',this.value)"
-        style="width:100%;background:rgba(248,244,238,.04);border:1px solid rgba(154,120,40,.1);color:rgba(248,244,238,.55);font-family:'Cormorant Garamond',serif;font-size:11px;padding:5px 10px;outline:none"
-        placeholder="食材・添え物（任意）">
-    </div>`).join('');
-
-  // Sync period input
-  const periodInput = document.getElementById('ep-course-period');
-  if(periodInput && periodInput !== document.activeElement) periodInput.value = state.courseperiod || state.courseItems ? (state.courseperiod||'') : '';
-}
-
-function updateCourse(i, field, val) {
-  state.courseItems[i][field] = val;
-  renderCourse();
-  saveData();
-}
-
-function addCourseItem() {
-  state.courseItems.push({name:'新しい料理', detail:''});
-  renderCourse();
-  saveData();
-  showSaveNotice();
-}
-
-function deleteCourse(i) {
-  if(!confirm('削除しますか？')) return;
-  state.courseItems.splice(i, 1);
-  renderCourse();
-  saveData();
-  showSaveNotice();
-}
-
-function moveCourse(i, dir) {
-  const j = i + dir;
-  if(j < 0 || j >= state.courseItems.length) return;
-  [state.courseItems[i], state.courseItems[j]] = [state.courseItems[j], state.courseItems[i]];
-  renderCourse();
-  saveData();
-}
-
-// Sync period title input
-document.addEventListener('DOMContentLoaded', () => {
-  const periodInput = document.getElementById('ep-course-period');
-  if(periodInput) {
-    periodInput.value = state.courseperiod || '2026年3月〜';
-    periodInput.addEventListener('input', () => {
-      state.courseperiod = periodInput.value;
-      const titleEl = document.querySelector('#menu .sjp');
-      if(titleEl) titleEl.textContent = periodInput.value + ' コースメニュー';
-      saveData();
-    });
-  }
-});
-
-/* SAVE */
-function saveData(){try{localStorage.setItem('renka-state',JSON.stringify(state));}catch(e){}}
-function exportData(){
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));
-  a.download='renka-data.json'; a.click();
-}
-function showSaveNotice(msg){
-  const n=document.getElementById('save-notice');
-  if(msg) n.textContent=msg;
-  n.classList.add('show');
-  setTimeout(()=>{n.classList.remove('show');n.textContent='保存しました ✓';},2400);
-}
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+}, { threshold: .08, rootMargin: '0px 0px -36px 0px' });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 </script>
 
 </body>
 </html>
-

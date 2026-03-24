@@ -342,17 +342,38 @@ nav.sc {
 .nav-drawer-link:hover .nav-en { color: var(--red); }
 .nav-drawer-link:hover .nav-ja { color: var(--red); }
 
-/* ── タブレット（iPad縦 769px〜1024px） ── */
-@media (min-width: 769px) and (max-width: 1024px) {
+/* ── タブレット縦（769px〜900px）: ハンバーガー表示 ── */
+@media (min-width: 769px) and (max-width: 900px) {
+  nav { height: 56px; padding: 0 24px; }
+  :root { --nav-h: 56px; }
+  .nlogo-t { font-size: 24px; }
+  .nav-hamburger { display: flex; margin-left: auto; }
+  .nav-links { display: none; }
+  .nav-icon { display: none !important; }
+  .ncta { display: none; }
+  .nav-drawer { display: block; }
+}
+
+/* ── タブレット横（901px〜1024px） ── */
+@media (min-width: 901px) and (max-width: 1024px) {
   nav { padding: 0 36px; height: 64px; }
   :root { --nav-h: 64px; }
   .nlogo-t { font-size: 26px; }
-  .nav-links { gap: 28px; }
-  .nav-link { font-size: 12px; letter-spacing: .16em; }
-  .ncta { font-size: 11px; padding: 8px 18px; letter-spacing: .18em; }
+  .nav-links { gap: 20px; }
+  .nav-link { font-size: 11px; letter-spacing: .12em; }
+  .ncta { font-size: 11px; padding: 8px 16px; letter-spacing: .14em; }
   .nav-hamburger { display: none; }
   .nav-drawer { display: none !important; }
   .nav-icon { display: flex !important; }
+
+  /* コンテンツレイアウト調整 */
+  #concept { gap: 48px; padding: 80px 5vw; }
+  #chef { gap: 48px; padding: 80px 5vw; }
+  #gallery { grid-template-rows: 38vh 38vh; }
+  .agrid { gap: 40px; }
+  .fi { grid-template-columns: 1fr 1fr; }
+  #menu, #news, #rsv, #access { padding: 80px 5vw; }
+  #cta-band { padding: 56px 5vw; }
 }
 
 /* ── スマホ（768px以下） ── */
@@ -1055,4 +1076,30 @@ footer{padding:64px 10vw 36px;background:var(--ink);border-top:1px solid rgba(24
 @media(max-width:600px){
   .sl-grid{grid-template-columns:1fr}
   #site-links{padding:64px 24px}
+}
+
+/* ── PREFERS-REDUCED-MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  /* スクロールリビール: アニメーションなしで即表示 */
+  .rv {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  /* ローダーアニメーション */
+  #loader { transition: none; }
+  #loader-lotus, .ld-en, .ld-sub { animation: none; opacity: 1; }
+  .ld-bar { animation: none; height: 48px; }
+
+  /* ヒーローテキスト */
+  .hero-l { transition: none; opacity: 1; }
+  .h-kicker, .h-title, .h-concept, .h-btns { animation: none; opacity: 1; }
+
+  /* ギャラリーホバーズーム */
+  .gp-photo { transition: none; }
+  .gp:hover .gp-photo { transform: none; }
+
+  /* ボタン・リンクのtransform */
+  .btn-primary--hero:hover { transform: none; }
 }

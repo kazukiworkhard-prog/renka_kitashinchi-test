@@ -77,6 +77,7 @@
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Shippori+Mincho+B1:wght@400;500;600&family=Shippori+Mincho:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Shippori+Mincho+B1:wght@400;500;600&family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet"></noscript>
 
+<script>if(sessionStorage.getItem('fromCoursePage')){sessionStorage.removeItem('fromCoursePage');document.documentElement.classList.add('skip-loader');}</script>
 </head>
 <body>
 
@@ -85,6 +86,7 @@
 <div id="cr"><div id="cri"></div></div>
 <!-- LOADER -->
 <div id="loader">
+  <video id="loader-video" src="Video Project 1.mp4" autoplay muted playsinline loop></video>
   <div id="loader-lotus">
     <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -228,8 +230,8 @@
       muted
       loop
       playsinline
-      preload="auto"
-      poster="hero-poster.jpg"
+      preload="metadata"
+      poster="写真/hero-poster.jpg"
     >
       <source src="renka-hero.mp4" type="video/mp4">
     </video>
@@ -241,8 +243,8 @@
   <div class="hero-l">
     <h1 class="seo-h1">蓮花（RENKA）北新地の創作料理店 | 旬のフルーツを使ったコース料理 大阪・北新地</h1>
     <div class="h-kicker">North Shinchi · Osaka</div>
-    <p class="h-title">旬は、<em>嘘をつかない。</em></p>
-    <p class="h-concept">素材が語る、季節の真実。<br>旬のフルーツが創作料理に溶け込み、<br>産地の声が皿の上に宿る、北新地の一夜。</p>
+    <p class="h-title">生産者の<em>声を聴く。</em></p>
+    <p class="h-concept">素材が語る、生産者の声。<br>旬のフルーツが創作料理に溶け込み、<br>産地の声が皿の上に宿る、北新地の一夜。</p>
   </div>
   <div class="sh"><span class="sh-t">Scroll</span><div class="sh-b"></div></div>
 </section>
@@ -270,15 +272,13 @@
     <p class="concept-sub rv d3">北新地という土地で、素材本来の力を引き出す創作料理。<br>それは単なる調理ではなく、<br>大地への感謝と食べる歓びを分かち合う行為。</p>
   </div>
   <div class="concept-vis">
-    <div class="cv-card rv d2">
+    <div class="cv-card rv d2" data-cv-bg="写真/DSC09659.jpg">
       <p class="cv-card-en">Signature</p>
       <p class="cv-card-jp">素材を活かす創作料理<br>× 旬のフルーツ</p>
-      <div class="cv-card-deco">旬</div>
     </div>
-    <div class="cv-card cv-dark rv d3">
+    <div class="cv-card cv-dark rv d3" data-cv-bg="写真/DSC09767.jpg">
       <p class="cv-card-en">Philosophy</p>
       <p class="cv-card-jp">産地と共存する料理。<br>大地への敬意を皿に。</p>
-      <div class="cv-card-deco">地</div>
     </div>
   </div>
 </section>
@@ -310,129 +310,66 @@
 <!-- MENU -->
 <section id="menu" aria-label="お料理・メニュー">
   <div class="menu-wm">旬</div>
+  <div class="menu-card">
   <div style="margin-bottom:56px">
     <div class="slbl rv">Menu</div>
-    <h2 class="sjp rv d1">料理内容｜旬のフルーツを使った創作コース</h2>
+    <h2 class="sjp rv d1">旬のフルーツを使った創作コース</h2>
     <p class="sen rv d2">Seasonal Cuisine</p>
   </div>
 
   <!-- コース概要 -->
   <div class="mgrid" style="margin-bottom:64px">
-    <div class="mi rv d1">
-      <p class="mi-en">Signature Course</p>
-      <h3 class="mi-name">創作コース</h3>
-      <p class="mi-p">¥13,200</p>
-      <p class="mi-ptax">税込 · お一人様</p>
-      <p class="mi-desc">蓮花の真髄を体験するフルコース。産地直送の旬食材と季節のフルーツが織りなす、一夜限りの物語。</p>
-      <div class="mi-deco">花</div>
-    </div>
-    <div class="mi rv d2">
-      <p class="mi-en">Share Set</p>
-      <h3 class="mi-name">シェアセット</h3>
-      <p class="mi-p">¥7,700</p>
-      <p class="mi-ptax">税込 · お一人様</p>
-      <p class="mi-desc">気軽に蓮花の世界観を楽しむシェアスタイルのセットメニュー。おふたりから、グループまで。</p>
-      <div class="mi-deco">膳</div>
-    </div>
-  </div>
-
-  <!-- 季節のコース詳細 -->
-  <div class="rv d2" style="margin-bottom:20px">
-    <div class="slbl">Course Detail</div>
-    <h3 class="sjp" style="font-size:clamp(18px,2.2vw,26px);margin-bottom:4px">2026年3月〜 コースメニュー</h3>
-    <p class="sen" style="margin-bottom:40px">Spring · 9 Courses</p>
-  </div>
-
-  <div class="course-list rv d2">
-    <div class="course-item">
-      <span class="course-num">01</span>
-      <div class="course-body">
-        <p class="course-name">神戸牛三角バラと洋梨のミルフィーユ</p>
-        <p class="course-detail">昆布墨塩　黒胡椒　／　無農薬野菜サラダ　梅ドレッシング</p>
+    <a href="course-sousaku.html" class="mi rv d1 mi-link" data-mi-bg="写真/DSC07740.jpg">
+      <div class="mi-photo"></div>
+      <div class="mi-text">
+        <p class="mi-en">Signature Course</p>
+        <h3 class="mi-name">創作コース</h3>
+        <p class="mi-p">¥13,200</p>
+        <p class="mi-ptax">税込 · お一人様</p>
+        <p class="mi-desc">蓮花の真髄を体験するフルコース。産地直送の旬食材と季節のフルーツが織りなす、一夜限りの物語。</p>
+        <span class="mi-arrow">詳細を見る →</span>
       </div>
-    </div>
-    <div class="course-item">
-      <span class="course-num">02</span>
-      <div class="course-body">
-        <p class="course-name">マンガリッツァ豚のポトフ　オレンジゼスト</p>
-        <p class="course-detail">アイコ　人参</p>
+    </a>
+    <a href="course-share.html" class="mi rv d2 mi-link" data-mi-bg="写真/dish-2.jpg">
+      <div class="mi-photo"></div>
+      <div class="mi-text">
+        <p class="mi-en">Share Set</p>
+        <h3 class="mi-name">シェアセット</h3>
+        <p class="mi-p">¥7,700</p>
+        <p class="mi-ptax">税込 · お一人様</p>
+        <p class="mi-desc">全4品ほどのライトなコース。前菜と、こだわりの食材を使ったメインディッシュを3品ほど。ウィスキーやワインが進むカジュアルコース。</p>
+        <span class="mi-arrow">詳細を見る →</span>
       </div>
-    </div>
-    <div class="course-item">
-      <span class="course-num">03</span>
-      <div class="course-body">
-        <p class="course-name">マゾイのカルパッチョ</p>
-        <p class="course-detail">紫キャベツ　せとか　フルール・ド・セル</p>
-      </div>
-    </div>
-    <div class="course-item">
-      <span class="course-num">04</span>
-      <div class="course-body">
-        <p class="course-name">うすなが牛のハンバーグ　ブリオッシュサンド</p>
-        <p class="course-detail">アプリコット　アーモンド</p>
-      </div>
-    </div>
-    <div class="course-item">
-      <span class="course-num">05</span>
-      <div class="course-body">
-        <p class="course-name">牛テールのトマト煮込み</p>
-        <p class="course-detail">さつまいも　蕾菜</p>
-      </div>
-    </div>
-    <div class="course-item">
-      <span class="course-num">06</span>
-      <div class="course-body">
-        <p class="course-name">グラニテ</p>
-        <p class="course-detail">晩白柚　グレープフルーツ</p>
-      </div>
-    </div>
-    <div class="course-item">
-      <span class="course-num">07</span>
-      <div class="course-body">
-        <p class="course-name">マンガリッツァ豚肩ロースのグリル</p>
-        <p class="course-detail">3種類のリンゴのコンディメント</p>
-      </div>
-    </div>
-    <div class="course-item">
-      <span class="course-num">08</span>
-      <div class="course-body">
-        <p class="course-name">うすなが牛すじカレー</p>
-        <p class="course-detail">マンゴー　醤油粕</p>
-      </div>
-    </div>
-    <div class="course-item">
-      <span class="course-num">09</span>
-      <div class="course-body">
-        <p class="course-name">本日のデザート</p>
-        <p class="course-detail">季節のフルーツを使用したシェフ特製デザート</p>
-      </div>
-    </div>
+    </a>
   </div>
 
   <div class="mnote rv d3" style="margin-top:32px">食物アレルギーのある方はご予約の際にお申し付けください。コース内容は仕入れ状況により変更する場合がございます。別途サービス料を頂戴します。</div>
+  </div><!-- /.menu-card -->
 </section>
 
 <!-- GALLERY -->
 <section id="gallery" aria-label="料理ギャラリー">
-  <div class="gp" data-idx="0">
-    <div class="gp-photo" id="gal-0" style="background-image:url(dish-1.jpg);background-size:cover;background-position:center"></div>
-    <div class="gp-overlay"></div>
+  <div style="text-align:center;padding:60px 0 32px">
+    <div class="slbl rv">Dishes</div>
+    <h2 class="sjp rv d1">料理内容</h2>
   </div>
-  <div class="gp" data-idx="1">
-    <div class="gp-photo" id="gal-1" style="background-image:url(dish-2.jpg);background-size:cover;background-position:center"></div>
-    <div class="gp-overlay"></div>
-  </div>
-  <div class="gp" data-idx="2">
-    <div class="gp-photo" id="gal-2" style="background-image:url(dish-3.jpg);background-size:cover;background-position:center"></div>
-    <div class="gp-overlay"></div>
-  </div>
-  <div class="gp" data-idx="3">
-    <div class="gp-photo" id="gal-3" style="background-image:url(dish-4.jpg);background-size:cover;background-position:center"></div>
-    <div class="gp-overlay"></div>
-  </div>
-  <div class="gp" data-idx="4">
-    <div class="gp-photo" id="gal-4" style="background-image:url(dish-5.jpg);background-size:cover;background-position:center"></div>
-    <div class="gp-overlay"></div>
+  <div class="dish-slider">
+    <div class="dish-slide active" style="background-image:url(写真/DSC07699.jpg)"></div>
+    <div class="dish-slide" style="background-image:url(写真/DSC09683.jpg)"></div>
+    <div class="dish-slide" style="background-image:url(写真/DSC09827.jpg)"></div>
+    <div class="dish-slide" style="background-image:url(写真/DSC09659.jpg)"></div>
+    <div class="dish-slide" style="background-image:url(写真/DSC09817-2.jpg)"></div>
+    <div class="dish-slide" style="background-image:url(写真/DSC07749.jpg)"></div>
+    <button class="dish-prev" aria-label="前の写真">&#8249;</button>
+    <button class="dish-next" aria-label="次の写真">&#8250;</button>
+    <div class="dish-dots">
+      <span class="dish-dot active"></span>
+      <span class="dish-dot"></span>
+      <span class="dish-dot"></span>
+      <span class="dish-dot"></span>
+      <span class="dish-dot"></span>
+      <span class="dish-dot"></span>
+    </div>
   </div>
 </section>
 
@@ -547,8 +484,8 @@
   </div>
   <p class="past-menu-lead rv">これまでにご好評いただいた旬の一品をご紹介します。<br>素材・季節・産地にこだわった蓮花ならではの創作料理。</p>
   <div class="past-menu-grid">
-    <div class="pm-card rv d1">
-      <div class="pm-img-wrap" id="pm-img-0">
+    <div class="pm-card rv d1" data-ig="https://www.instagram.com/p/DVdVVhlD97u/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
+      <div class="pm-img-wrap" id="pm-img-0" style="background-image:url(写真/DSC07721.jpg);background-size:cover;background-position:center">
         <div class="pm-img-placeholder">
           <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
             <rect width="120" height="80" fill="#f0e8dc"/>
@@ -557,13 +494,13 @@
         </div>
       </div>
       <div class="pm-body">
-        <p class="pm-season">春</p>
-        <p class="pm-name">山菜と桜海老の彩り盛り</p>
-        <p class="pm-note">春の山の恵みと駿河湾の桜海老。季節の出会いが生む一皿。</p>
+        <p class="pm-name">うすなが牛　クリとミスジのステーキ</p>
+        <p class="pm-note">兵庫県のうすなが牧場から直接仕入れているうすなが牛。
+          クリとミスジを贅沢に味わえるステーキです。</p>
       </div>
     </div>
-    <div class="pm-card rv d2">
-      <div class="pm-img-wrap" id="pm-img-1">
+    <div class="pm-card rv d2" data-ig="https://www.instagram.com/p/DWTYsGpj-8a/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
+      <div class="pm-img-wrap" id="pm-img-1" style="background-image:url(写真/DSC09692.jpg);background-size:cover;background-position:center">
         <div class="pm-img-placeholder">
           <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
             <rect width="120" height="80" fill="#f0e8dc"/>
@@ -572,13 +509,15 @@
         </div>
       </div>
       <div class="pm-body">
-        <p class="pm-season">夏</p>
-        <p class="pm-name">鮎と無花果の冷製仕立て</p>
-        <p class="pm-note">清流の鮎と夏のフルーツが織りなす涼やかな一皿。</p>
+        
+        <p class="pm-name">マゾイの爽やかなカルパッチョ</p>
+        <p class="pm-note">マゾイというお魚のカルパッチョ。
+          クセがなく上品な脂の乗りが特徴のこのお魚は
+          岩手の漁港から直接仕入れており、熟成させています。</p>
       </div>
     </div>
-    <div class="pm-card rv d3">
-      <div class="pm-img-wrap" id="pm-img-2">
+    <div class="pm-card rv d3" data-ig="https://www.instagram.com/p/DWLklwcj7VB/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
+      <div class="pm-img-wrap" id="pm-img-2" style="background-image:url(写真/DSC09668.jpg);background-size:cover;background-position:center">
         <div class="pm-img-placeholder">
           <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
             <rect width="120" height="80" fill="#f0e8dc"/>
@@ -587,13 +526,13 @@
         </div>
       </div>
       <div class="pm-body">
-        <p class="pm-season">秋</p>
-        <p class="pm-name">松茸と洋梨のグリエ</p>
-        <p class="pm-note">丹波の松茸と洋梨の甘みが奏でる、秋の豊かな風味。</p>
+        <p class="pm-name">マンガリッツァパンチェッタの旨味ポトフ</p>
+        <p class="pm-note">ハンガリーの国宝と言われているマンガリッツァ豚。
+          1週間ほど熟成させてから、旨みたっぷりのお出汁をとってポトフ仕立てに。</p>
       </div>
     </div>
-    <div class="pm-card rv d4">
-      <div class="pm-img-wrap" id="pm-img-3">
+    <div class="pm-card rv d4" data-ig="https://www.instagram.com/p/投稿ID4/">
+      <div class="pm-img-wrap" id="pm-img-3" style="background-image:url(写真/DSC09657.jpg);background-size:cover;background-position:center">
         <div class="pm-img-placeholder">
           <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
             <rect width="120" height="80" fill="#f0e8dc"/>
@@ -602,9 +541,10 @@
         </div>
       </div>
       <div class="pm-body">
-        <p class="pm-season">冬</p>
-        <p class="pm-name">ぐじと柚子の土鍋蒸し</p>
-        <p class="pm-note">甘鯛の旨みと柚子の香りが溶け合う、冬の温かな逸品。</p>
+        <p class="pm-name">神戸牛三角バラと白イチゴのミルフィーユ　
+          無農薬野菜サラダ</p>
+        <p class="pm-note">爽やかなイチゴと新鮮な神戸牛がメイン。
+          バラなのに濃厚な赤身の味わいに、爽やかな苺の酸味が調和します。</p>
       </div>
     </div>
   </div>
@@ -822,10 +762,16 @@
 /* === RENKA · WordPress-ready static site === */
 
 document.addEventListener('DOMContentLoaded', () => { initSlideshow(); });
-window.addEventListener('load', () => setTimeout(() => {
-  document.getElementById('loader').classList.add('out');
-  document.body.classList.add('loaded');
-}, 2500));
+window.addEventListener('load', () => {
+  if (document.documentElement.classList.contains('skip-loader')) {
+    document.body.classList.add('loaded');
+    return;
+  }
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('out');
+    document.body.classList.add('loaded');
+  }, 2500);
+});
 
 /* CURSOR */
 const cd = document.getElementById('cd'), cr = document.getElementById('cr');
@@ -843,7 +789,111 @@ const obs = new IntersectionObserver(es => {
   es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
 }, { threshold: .08, rootMargin: '0px 0px -36px 0px' });
 document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+/* INSTAGRAM MODAL */
+document.addEventListener('DOMContentLoaded', function(){
+  const igModal    = document.getElementById('ig-modal');
+  const igBackdrop = igModal.querySelector('.igmod-backdrop');
+  const igClose    = igModal.querySelector('.igmod-close');
+  const igEmbed    = igModal.querySelector('.igmod-embed');
+
+  function openIg(url) {
+    igEmbed.innerHTML =
+      '<blockquote class="instagram-media" data-instgrm-version="14"' +
+      ' data-instgrm-permalink="' + url + '"' +
+      ' style="min-width:280px;max-width:400px;width:calc(100% - 2px);margin:0 auto;"></blockquote>';
+    igModal.setAttribute('aria-hidden', 'false');
+    igModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    // Instagram埋め込みスクリプトを読み込み or 再処理
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+    } else if (!document.getElementById('ig-embed-script')) {
+      const s = document.createElement('script');
+      s.id = 'ig-embed-script';
+      s.async = true;
+      s.src = 'https://www.instagram.com/embed.js';
+      document.body.appendChild(s);
+    }
+  }
+
+  function closeIg() {
+    igModal.classList.remove('open');
+    igModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    setTimeout(() => { igEmbed.innerHTML = ''; }, 400);
+  }
+
+  document.querySelectorAll('.pm-card[data-ig]').forEach(card => {
+    card.addEventListener('click', () => openIg(card.dataset.ig));
+  });
+  igBackdrop.addEventListener('click', closeIg);
+  igClose.addEventListener('click', closeIg);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeIg(); });
+});
+
+/* COURSE CARD PHOTO */
+document.querySelectorAll('.mi-link[data-mi-bg]').forEach(el => {
+  const photo = el.querySelector('.mi-photo'); if(photo) photo.style.backgroundImage = 'url(' + el.dataset.miBg + ')';
+});
+/* CONCEPT CARD PHOTO */
+document.querySelectorAll('.cv-card[data-cv-bg]').forEach(el => {
+  const bg = el.dataset.cvBg;
+  if(bg){ el.style.backgroundImage = 'url(' + bg + ')'; el.classList.add('has-photo'); }
+});
+
+/* REVIEW MODAL */
+document.addEventListener('DOMContentLoaded', function(){
+  const modal    = document.getElementById('review-modal');
+  const backdrop = modal.querySelector('.rmod-backdrop');
+  const closeBtn = modal.querySelector('.rmod-close');
+  const mHeader  = modal.querySelector('.rmod-header');
+  const mText    = modal.querySelector('.rmod-text');
+
+  function openModal(card) {
+    mHeader.innerHTML = card.querySelector('.gr-header').innerHTML;
+    mText.textContent = card.querySelector('.gr-text').textContent;
+    modal.setAttribute('aria-hidden', 'false');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.gr-card').forEach(card => {
+    card.addEventListener('click', () => openModal(card));
+  });
+
+  backdrop.addEventListener('click', closeModal);
+  closeBtn.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+});
 </script>
+
+<!-- INSTAGRAM MODAL -->
+<div id="ig-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Instagram投稿">
+  <div class="igmod-backdrop"></div>
+  <div class="igmod-box">
+    <button class="igmod-close" aria-label="閉じる">×</button>
+    <div class="igmod-embed"></div>
+  </div>
+</div>
+
+<!-- REVIEW MODAL -->
+<div id="review-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="口コミ詳細">
+  <div class="rmod-backdrop"></div>
+  <div class="rmod-box">
+    <button class="rmod-close" aria-label="閉じる">×</button>
+    <div class="rmod-header"></div>
+    <p class="rmod-text"></p>
+  </div>
+</div>
 
 </body>
 </html>
